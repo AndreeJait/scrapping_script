@@ -1,18 +1,18 @@
 GET https://www.instagram.com/
-SLEEP 2
+SLEEP 15
 INPUT "#loginForm > div > div:nth-child(1) > div > label > input" "goodwishforyou02"
 INPUT "#loginForm > div > div:nth-child(2) > div > label > input" "bingung"
 SLEEP 1
 CLICK "#loginForm > div > div:nth-child(3)"
-SLEEP 3
+SLEEP 20
 CLICK "div.x1yc6y37"
-SLEEP 3
+SLEEP 30
 CLICK "button._a9--._a9_1"
-SLEEP 3
+SLEEP 10
 CLICK "div.xh8yej3 > div:nth-child(2) > div"
-SLEEP 3
-INPUT "div.x9f619.xjbqb8w.x78zum5.x168nmei.x13lgxp2.x5pf9jr.xo71vjh.x1d52u69.xktsk01.x1n2onr6.x1plvlek.xryxfnj.x1c4vz4f.x2lah0s.xdt5ytf.xqjyukv.x1qjc9v5.x1oa3qoh.x1nhvcw1 > div > input" "#trending"
 SLEEP 4
+INPUT "div.x9f619.xjbqb8w.x78zum5.x168nmei.x13lgxp2.x5pf9jr.xo71vjh.x1d52u69.xktsk01.x1n2onr6.x1plvlek.xryxfnj.x1c4vz4f.x2lah0s.xdt5ytf.xqjyukv.x1qjc9v5.x1oa3qoh.x1nhvcw1 > div > input" "#ganjarpranowo"
+SLEEP 3
 CLICK "div.x9f619.xjbqb8w.x78zum5.x168nmei.x13lgxp2.x5pf9jr.xo71vjh.x1n2onr6.x1plvlek.xryxfnj.x1iyjqo2.x2lwn1j.xeuugli.xdt5ytf.xqjyukv.x1qjc9v5.x1oa3qoh.x1nhvcw1 > div.x6s0dn4.x1wzhzgj.x78zum5.xdt5ytf.x5yr21d.x1n2onr6.xh8yej3.xhtitgo > div > div:nth-child(1) > a > div > div > div"
 SLEEP 10
 LOOP i 0 length:"div._aaq8 > div > div > div" result:ARRAY
@@ -20,7 +20,12 @@ BEGIN
     LOOP j 0 length:"div._aaq8 > div > div > div:nth-child({i}) > div" feed:ARRAY
     BEGIN
         CLICK "div._aaq8 > div > div > div:nth-child({i}) > div:nth-child({j})"
-        SLEEP 2
+        SLEEP 5
+        WHILE EXISTS "div._ae2s._ae3v._ae3w > div._ae5q._akdn._ae5r._ae5s > ul > li > div > button"
+        BEGIN
+            CLICK "div._ae2s._ae3v._ae3w > div._ae5q._akdn._ae5r._ae5s > ul > li > div > button"
+            SLEEP 2
+        END
         LOOP m 0 length:"ul._a9z6._a9za > ul" comments:ARRAY
         BEGIN
             CONDITION {m} > 1
@@ -37,7 +42,7 @@ BEGIN
         END
         CLICK "div.x9f619.x1n2onr6.x1ja2u2z > div > div.x10l6tqk.x160vmok.x1eu8d0j.x1vjfegm > div > div"
         SLEEP 2
-        TO_EXCEL instagram_trending.xlsx comments @mode:a @sheet:comment
+        TO_EXCEL instagram_ganjar_prabowo.xlsx comments @mode:a @sheet:comment
         JOIN_ARRAY feed comments
     END
     JOIN_ARRAY result feed
